@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Cinema</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-0">Welcome</h1>
+
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-secondary btn-lg">Logout</button>
+        </form>
+    </div>
+
+    <p>Select a cinema:</p>
+
+    <div class="d-flex gap-3">
+        <a class="btn btn-dark">Tennispalatsi, Helsinki</a>
+        <a class="btn btn-dark">Plevna, Tampere</a>
+        <a class="btn btn-dark">Kinopalatsi, Turku</a>
+    </div>
+
+</body>
