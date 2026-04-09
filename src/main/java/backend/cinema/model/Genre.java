@@ -1,5 +1,7 @@
 package backend.cinema.model;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -11,15 +13,15 @@ public class Genre {
 
     private String name;
 
-    @ManyToOne
-    private Movie movie;
+    @OneToMany
+    List<Movie> movies;
 
     public Genre() {
     }
 
-    public Genre(String name, Movie movie) {
+    public Genre(String name) {
         this.name = name;
-        this.movie = movie;
+
     }
 
     public Long getId() {
@@ -38,17 +40,9 @@ public class Genre {
         this.name = name;
     }
 
-    public Movie getMovie() {
-        return movie;
-    }
-
-    public void setMovie(Movie movie) {
-        this.movie = movie;
-    }
-
     @Override
     public String toString() {
-        return "Genre [id=" + id + ", name=" + name + ", movie=" + movie + "]";
+        return "Genre [id=" + id + ", name=" + name + "]";
     }
 
 }

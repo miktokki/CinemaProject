@@ -34,8 +34,8 @@ public class Movie {
     private double price;
 
     @NotNull(message = "Select a genre")
-    @OneToMany
-    private List<Genre> genres;
+    @ManyToOne
+    private Genre genre;
 
     @ManyToOne
     private Cinema cinema;
@@ -49,14 +49,14 @@ public class Movie {
             int publicationYear,
             int duration,
             double price,
-            List<Genre> genres,
+            Genre genre,
             Cinema cinema) {
         this.title = title;
         this.director = director;
         this.publicationYear = publicationYear;
         this.duration = duration;
         this.price = price;
-        this.genres = genres;
+        this.genre = genre;
         this.cinema = cinema;
     }
 
@@ -116,18 +116,18 @@ public class Movie {
         this.cinema = cinema;
     }
 
-    public List<Genre> getGenre() {
-        return genres;
+    public Genre getGenre() {
+        return genre;
     }
 
-    public void setGenre(List<Genre> genre) {
-        this.genres = genre;
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 
     @Override
     public String toString() {
         return "Movie [id=" + id + ", title=" + title + ", director=" + director + ", publicationYear="
-                + publicationYear + ", duration=" + duration + ", price=" + price + ", genre=" + genres + ", cinema="
+                + publicationYear + ", duration=" + duration + ", price=" + price + ", genre=" + genre + ", cinema="
                 + cinema + "]";
     }
 

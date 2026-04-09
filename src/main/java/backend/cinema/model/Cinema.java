@@ -25,10 +25,9 @@ public class Cinema {
     public Cinema() {
     }
 
-    public Cinema(String name, String city, List<Movie> movies) {
+    public Cinema(String name, String city) {
         this.name = name;
         this.city = city;
-        this.movies = movies;
     }
 
     public Long getId() {
@@ -55,17 +54,9 @@ public class Cinema {
         this.city = city;
     }
 
-    public List<Movie> getMovies() {
-        return movies;
-    }
-
-    public void setMovies(List<Movie> movies) {
-        this.movies = movies;
-    }
-
     @Override
     public String toString() {
-        return "Cinema [id=" + id + ", name=" + name + ", city=" + city + ", movies=" + movies + "]";
+        return "Cinema [id=" + id + ", name=" + name + ", city=" + city + "]";
     }
 
 }
