@@ -6,3 +6,42 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
 </head>
+
+<body class="container py-5">
+
+    <!-- Back nappula-->
+    <div>
+        <a th:href="@{/}" class="btn btn-outline-secondary">Back</a>
+    </div>
+    <!-- -->
+
+    <h1 th:text="${cinemas.name + ', ' + cinemas.city}"></h1>
+
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Director</th>
+                <th>Publication year</th>
+                <th>Duration</th>
+                <th>Price</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="movie : ${movies}">
+                <td th:text="${movie.title}"></td>
+                <td th:text="${movie.director}"></td>
+                <td th:text="${movie.publicationYear}"></td>
+                <td th:text="${movie.duration} + min"></td>
+                <td th:text="${movie.price} + €"></td>
+                <td th:text="${movie.genre}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</body>
+
+</html>
