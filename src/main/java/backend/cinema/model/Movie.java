@@ -1,7 +1,5 @@
 package backend.cinema.model;
 
-import java.util.List;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
@@ -20,17 +18,17 @@ public class Movie {
     private String director;
 
     @NotNull(message = "Enter the release year")
-    @Min(value = 1000)
-    @Max(value = 9999)
+    @Min(value = 1900, message = "Release year between 1900 and 2030")
+    @Max(value = 2030, message = "Release year between 1900 and 2030")
     private int publicationYear;
 
     @NotNull(message = "Enter the duration")
     @Min(value = 1)
-    @Max(value = 400)
+    @Max(value = 400, message = "Duration must be less than or equal to 400")
     private int duration;
 
     @DecimalMin(value = "0.0", inclusive = false, message = "Price must be positive")
-    @DecimalMax(value = "100.0", message = "Price is too high")
+    @DecimalMax(value = "100.0", message = "Price is too high, max price 100 €")
     private double price;
 
     @NotNull(message = "Select a genre")
@@ -38,7 +36,13 @@ public class Movie {
     private Genre genre;
 
     @ManyToOne
+    @JoinColumn(name = "cinema_id")
     private Cinema cinema;
+
+    private int bookedSeats;
+
+    @Min(value = 1, message = "Capacity must be at least 1")
+    private int capacity;
 
     public Movie() {
     }
@@ -50,7 +54,9 @@ public class Movie {
             int duration,
             double price,
             Genre genre,
-            Cinema cinema) {
+            Cinema cinema,
+            int bookedSeats,
+            int capacity) {
         this.title = title;
         this.director = director;
         this.publicationYear = publicationYear;
@@ -58,6 +64,8 @@ public class Movie {
         this.price = price;
         this.genre = genre;
         this.cinema = cinema;
+        this.bookedSeats = bookedSeats;
+        this.capacity = capacity;
     }
 
     public Long getId() {
@@ -124,11 +132,27 @@ public class Movie {
         this.genre = genre;
     }
 
+    public int getBookedSeats() {
+        return bookedSeats;
+    }
+
+    public void setBookedSeats(int bookedSeats) {
+        this.bookedSeats = bookedSeats;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
     @Override
     public String toString() {
         return "Movie [id=" + id + ", title=" + title + ", director=" + director + ", publicationYear="
                 + publicationYear + ", duration=" + duration + ", price=" + price + ", genre=" + genre + ", cinema="
-                + cinema + "]";
+                + cinema + ", bookedSeats=" + bookedSeats + ", capacity=" + capacity + "]";
     }
 
 }

@@ -13,7 +13,7 @@ public class Genre {
 
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "genre")
     List<Movie> movies;
 
     public Genre() {

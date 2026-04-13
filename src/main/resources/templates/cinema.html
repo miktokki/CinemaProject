@@ -9,13 +9,20 @@
 
 <body class="container py-5">
 
-    <!-- Back nappula-->
     <div>
         <a th:href="@{/}" class="btn btn-outline-secondary">Back</a>
     </div>
-    <!-- -->
 
-    <h1 th:text="${cinemas.name + ', ' + cinemas.city}"></h1>
+
+    <div class="d-flex justify-content-end align-items-center gap-2 mb-3">
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-secondary btn-lg">Logout</button>
+        </form>
+        <a th:href="@{/addmovie(city=${city})}" class="btn btn-success btn-lg" sec:authorize="hasAuthority('ADMIN')">Add
+            movie</a>
+    </div>
+
+    <h1 th:text="${cinema.name + ', ' + cinema.city}"></h1>
 
     <table class="table table-striped mt-4">
         <thead>
@@ -26,6 +33,8 @@
                 <th>Duration</th>
                 <th>Price</th>
                 <th>Genre</th>
+                <th>Seats available</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -33,12 +42,31 @@
                 <td th:text="${movie.title}"></td>
                 <td th:text="${movie.director}"></td>
                 <td th:text="${movie.publicationYear}"></td>
-                <td th:text="${movie.duration} + min"></td>
-                <td th:text="${movie.price} + €"></td>
+                <td th:text="${movie.duration} + ' min'"></td>
+                <td th:text="${movie.price} + ' €'"></td>
                 <td th:text="${movie.genre}"></td>
+                <td th:text="${(movie.capacity - movie.bookedSeats) + '/' + movie.capacity}"></td>
+                <td>
+                    <form th:action="@{/cinema/{id}(id=${movie.id})}" method="post">
+                        <button type="submit" class="btn btn-dark btn-sm" onclick="return confirm('Book a seat?')">
+                            Book a seat
+                        </button>
+                    </form>
+                </td>
+                <td><a th:href="@{/editmovie/{id}(id=${movie.id})}" class="btn btn-success"
+                        sec:authorize="hasAuthority('ADMIN')">Edit</a>
+                    <form th:action="@{/deletemovie/{id}(id=${movie.id})}" method="post" style="display:inline;">
+                        <input type="hidden" name="city" th:value="${city}" />
+                        <button type="submit" class="btn btn-danger btn-sm" sec:authorize="hasAuthority('ADMIN')"
+                            onclick="return confirm('Delete this screening?')">Delete</button>
+                    </form>
+
             </tr>
         </tbody>
     </table>
+
+
+
 
 
 
