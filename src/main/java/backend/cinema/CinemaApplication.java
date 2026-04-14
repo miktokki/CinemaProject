@@ -56,6 +56,19 @@ public class CinemaApplication {
 						40);
 				Movie inception = new Movie("Inception", "Christopher Nolan", 2010, 148, 16.0, scifi, turku, 17, 60);
 				Movie seven = new Movie("Seven", "David Fincher", 1995, 127, 13.0, horror, turku, 34, 60);
+				Movie darkknight = new Movie("The Dark Knight", "Christopher Nolan", 2008, 152, 15.0, action, helsinki,
+						40, 80);
+				Movie pulpfiction = new Movie("Pulp Fiction", "Quentin Tarantino", 1994, 154, 11.0, action, helsinki,
+						35, 70);
+				Movie matrix = new Movie("The Matrix", "Wachowski Sisters", 1999, 136, 13.0, scifi, tampere, 22, 60);
+				Movie gladiator = new Movie("Gladiator", "Ridley Scott", 2000, 155, 12.0, action, tampere, 30, 75);
+				Movie titanic = new Movie("Titanic", "James Cameron", 1997, 195, 9.0, drama, turku, 50, 100);
+				Movie avatar = new Movie("Avatar", "James Cameron", 2009, 162, 14.0, scifi, turku, 28, 80);
+				Movie joker = new Movie("Joker", "Todd Phillips", 2019, 122, 13.0, drama, helsinki, 18, 50);
+				Movie parasite = new Movie("Parasite", "Bong Joon-ho", 2019, 132, 12.0, drama, tampere, 12, 40);
+				Movie whiplash = new Movie("Whiplash", "Damien Chazelle", 2014, 107, 10.0, drama, turku, 10, 35);
+				Movie avengers = new Movie("Avengers: Endgame", "Russo Brothers", 2019, 181, 16.0, action, helsinki, 45,
+						120);
 
 				movieRepo.save(interstellar);
 				movieRepo.save(godfather);
@@ -63,6 +76,16 @@ public class CinemaApplication {
 				movieRepo.save(forrestgump);
 				movieRepo.save(inception);
 				movieRepo.save(seven);
+				movieRepo.save(darkknight);
+				movieRepo.save(pulpfiction);
+				movieRepo.save(matrix);
+				movieRepo.save(gladiator);
+				movieRepo.save(titanic);
+				movieRepo.save(avatar);
+				movieRepo.save(joker);
+				movieRepo.save(parasite);
+				movieRepo.save(whiplash);
+				movieRepo.save(avengers);
 
 				AppUser user = new AppUser("user", "$2a$12$oZMpg6HZM7guShvIVHaAtOw9TAYcKRZiJ7L2jf.Vu2ZJx.hTlpvC2",
 						"USER");

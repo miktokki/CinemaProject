@@ -41,7 +41,7 @@ public class Movie {
 
     private int bookedSeats;
 
-    @Min(value = 1, message = "Capacity must be at least 1")
+    @Min(value = 10, message = "Capacity must be at least 10")
     private int capacity;
 
     public Movie() {
